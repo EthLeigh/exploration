@@ -1,0 +1,2 @@
+const PLAYER_SPEED = 4;
+const PLAYER_ROTATION_SPEED = 5;

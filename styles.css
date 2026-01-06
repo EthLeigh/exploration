@@ -1,0 +1,69 @@
+body {
+  user-select: none;
+  font-family: monospace;
+  background-color: rgb(25, 35, 55);
+  overflow: hidden;
+}
+
+#player {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(0);
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  width: min-content;
+  height: min-content;
+  transform-origin: center top;
+  transition: transform 400ms ease-out;
+}
+
+#player > svg {
+  position: absolute;
+  align-self: center;
+  fill: rgb(230, 230, 230);
+  width: 12px;
+  height: 20px;
+  transform: scale(2);
+}
+
+#player > .glow {
+  opacity: 0.5;
+  filter: blur(4px);
+}
+
+#world {
+  width: 100vw;
+  height: 100vh;
+  transition: transform 800ms ease-out;
+}
+
+#world > * {
+  position: absolute;
+  color: white;
+  text-shadow: 0 4px 24px;
+}
+
+#world > .bubble {
+  animation: bubble-float 1s linear forwards;
+}
+
+@keyframes bubble-float {
+  0% {
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-64px);
+  }
+}
