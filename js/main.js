@@ -1,12 +1,12 @@
-const player = document.body.querySelector("#player");
-const world = document.body.querySelector("#world");
+const playerEl = document.body.querySelector("#player");
+const worldEl = document.body.querySelector("#world");
 
 let playerAngle = 0;
 let playerPosition = { x: 0, y: 0 };
 
 const input = new Input();
 
-const handleInput = () => {
+const handlePlayerMovement = () => {
   let rotationMagnitude = 0;
   if (input.isKeyActive("d") || input.isKeyActive("ArrowRight")) {
     rotationMagnitude = 1;
@@ -28,34 +28,38 @@ const handleInput = () => {
   playerPosition.y += Math.cos(radAngle) * PLAYER_SPEED * movementMagnitude;
 };
 
-const handleRotatePlayer = () => {
-  handleInput();
+const handleAnimationFrame = () => {
+  handlePlayerMovement();
 
-  player.style.transform = `translate(-50%, -50%) rotate(${playerAngle}deg)`;
-  world.style.transform = `translate(${-playerPosition.x}px, ${
+  playerEl.style.transform = `translate(-50%, -50%) rotate(${playerAngle}deg)`;
+  worldEl.style.transform = `translate(${-playerPosition.x}px, ${
     playerPosition.y
   }px)`;
 
-  requestAnimationFrame(handleRotatePlayer);
+  requestAnimationFrame(handleAnimationFrame);
 };
 
+// TODO: Refactor to not create new elements, but shift around existing ones
 setInterval(() => {
   for (let i = 0; i < 5; i++) {
     const bubbleEl = document.createElement("p");
 
     bubbleEl.style.top = `calc(${
-      (Math.random() - 0.5) * 150
+      (Math.random() - 0.5) * 200
     }% + ${-playerPosition.y}px)`;
-    bubbleEl.style.left = `calc(${(Math.random() - 0.5) * 150}% + ${
+    bubbleEl.style.left = `calc(${(Math.random() - 0.5) * 200}% + ${
       playerPosition.x
     }px)`;
     bubbleEl.textContent = Math.random() > 0.5 ? "0" : "1";
     bubbleEl.classList.add("bubble");
 
-    world.appendChild(bubbleEl);
+    worldEl.appendChild(bubbleEl);
 
     setTimeout(() => bubbleEl.remove(), 1000);
   }
 }, 200);
 
-requestAnimationFrame(handleRotatePlayer);
+// test
+createMessageElement("holy shit, a message", 200, 550);
+
+requestAnimationFrame(handleAnimationFrame);

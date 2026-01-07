@@ -1,8 +1,21 @@
+:root {
+  --black-col: rgb(25, 35, 55);
+  --white-col: rgb(230, 230, 230);
+}
+
 body {
   user-select: none;
   font-family: monospace;
-  background-color: rgb(25, 35, 55);
+  background-color: var(--black-col);
   overflow: hidden;
+}
+
+.message {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 256px;
+  text-align: center;
+  text-shadow: 0 0 8px !important;
 }
 
 #player {
@@ -22,7 +35,7 @@ body {
 #player > svg {
   position: absolute;
   align-self: center;
-  fill: rgb(230, 230, 230);
+  fill: var(--white-col);
   width: 12px;
   height: 20px;
   transform: scale(2);
@@ -41,7 +54,7 @@ body {
 
 #world > * {
   position: absolute;
-  color: white;
+  color: var(--white-col);
   text-shadow: 0 4px 24px;
 }
 
