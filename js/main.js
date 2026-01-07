@@ -1,3 +1,4 @@
+const positionEl = document.body.querySelector("#position");
 const playerEl = document.body.querySelector("#player");
 const worldEl = document.body.querySelector("#world");
 
@@ -35,6 +36,10 @@ const handleAnimationFrame = () => {
   worldEl.style.transform = `translate(${-playerPosition.x}px, ${
     playerPosition.y
   }px)`;
+
+  positionEl.textContent = `{ ${Math.round(playerPosition.x)}, ${Math.round(
+    playerPosition.y
+  )} }`;
 
   requestAnimationFrame(handleAnimationFrame);
 };
