@@ -39,26 +39,6 @@ const handleAnimationFrame = () => {
   requestAnimationFrame(handleAnimationFrame);
 };
 
-// TODO: Refactor to not create new elements, but shift around existing ones
-setInterval(() => {
-  for (let i = 0; i < 5; i++) {
-    const bubbleEl = document.createElement("p");
-
-    bubbleEl.style.top = `calc(${
-      (Math.random() - 0.5) * 200
-    }% + ${-playerPosition.y}px)`;
-    bubbleEl.style.left = `calc(${(Math.random() - 0.5) * 200}% + ${
-      playerPosition.x
-    }px)`;
-    bubbleEl.textContent = Math.random() > 0.5 ? "0" : "1";
-    bubbleEl.classList.add("bubble");
-
-    worldEl.appendChild(bubbleEl);
-
-    setTimeout(() => bubbleEl.remove(), 1000);
-  }
-}, 200);
-
 // test
 createMessageElement("holy shit, a message", 200, 550);
 

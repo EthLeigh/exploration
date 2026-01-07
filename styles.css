@@ -59,7 +59,8 @@ body {
 }
 
 #world > .bubble {
-  animation: bubble-float 1s linear forwards;
+  opacity: 0;
+  animation: bubble-float 1s linear infinite;
 }
 
 @keyframes bubble-float {
@@ -67,7 +68,7 @@ body {
     opacity: 0;
   }
 
-  10% {
+  15% {
     opacity: 1;
   }
 
