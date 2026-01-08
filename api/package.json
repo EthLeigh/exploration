@@ -1,0 +1,14 @@
+{
+  "name": "exploration-api",
+  "private": true,
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.17.0",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1"
+  }
+}
