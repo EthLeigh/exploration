@@ -1,10 +1,16 @@
 import "dotenv/config";
 import express from "express";
+import cors from "cors";
 
 import { fetchMessagesInArea, saveMessage } from "./db.js";
 
 const app = express();
-
+app.use(
+  cors({
+    methods: ["POST", "GET", "OPTIONS"],
+    origin: ["*"],
+  })
+);
 app.use(express.json());
 
 app.get("/api/messages", async (req, res) => {
