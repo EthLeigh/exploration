@@ -13,8 +13,8 @@ app.use(
 app.use(express.json());
 
 app.get("/api/messages", async (req, res) => {
-  const x = req.query.x ?? 0;
-  const y = req.query.y ?? 0;
+  const x = Number.parseInt(req.query.x) ?? 0;
+  const y = Number.parseInt(req.query.y) ?? 0;
 
   let messages;
   try {
