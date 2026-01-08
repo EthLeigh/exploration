@@ -44,7 +44,23 @@ const handleAnimationFrame = () => {
   requestAnimationFrame(handleAnimationFrame);
 };
 
-// test
-createMessageElement("holy shit, a message", 200, 550);
+const loadMessages = async () => {
+  const messages = await getMessages(playerPosition.x, playerPosition.y);
+
+  document.body
+    .querySelectorAll(".message")
+    .forEach((messageEl) => messageEl.remove());
+
+  messages.forEach((message) => {
+    createMessageElement(
+      message.message,
+      message["position_x"],
+      message["position_y"]
+    );
+  });
+};
+
+loadMessages();
+setInterval(loadMessages, 10000);
 
 requestAnimationFrame(handleAnimationFrame);
