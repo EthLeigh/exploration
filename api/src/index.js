@@ -28,8 +28,8 @@ app.get("/api/messages", async (req, res) => {
   const formattedMessages = messages.map((message) => ({
     userName: message["user_name"],
     message: message.message,
-    x: message["x_position"],
-    y: message["y_position"],
+    x: message["position_x"],
+    y: message["position_y"],
   }));
 
   return res.json(formattedMessages);

@@ -1,6 +1,10 @@
 let playerAngle = 0;
 let playerPosition = { x: 0, y: 0 };
+let creationModalActive = false;
 
+const createMessageContainerEl = document.body.querySelector(
+  "#create-message-container"
+);
 const input = new Input();
 
 const handlePlayerMovement = () => {
@@ -26,16 +30,26 @@ const handlePlayerMovement = () => {
 };
 
 const handleAnimationFrame = () => {
-  handlePlayerMovement();
+  if (!creationModalActive) {
+    // Check for 'Space' input
+    if (input.isKeyActive(" ")) {
+      creationModalActive = true;
 
-  playerEl.style.transform = `translate(-50%, -50%) rotate(${playerAngle}deg)`;
-  worldEl.style.transform = `translate(${-playerPosition.x}px, ${
-    playerPosition.y
-  }px)`;
+      createMessageContainerEl.style.opacity = 1;
+      createMessageContainerEl.style.pointerEvents = "all";
+    }
 
-  positionEl.textContent = `{ ${Math.round(playerPosition.x)}, ${Math.round(
-    playerPosition.y
-  )} }`;
+    handlePlayerMovement();
+
+    playerEl.style.transform = `translate(-50%, -50%) rotate(${playerAngle}deg)`;
+    worldEl.style.transform = `translate(${-playerPosition.x}px, ${
+      playerPosition.y
+    }px)`;
+
+    positionEl.textContent = `{ ${Math.round(playerPosition.x)}, ${Math.round(
+      playerPosition.y
+    )} }`;
+  }
 
   requestAnimationFrame(handleAnimationFrame);
 };

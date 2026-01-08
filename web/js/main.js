@@ -30,6 +30,12 @@ const submitMessage = async () => {
 
   createMessageEl.style.opacity = 0;
   createMessageEl.style.pointerEvents = "none";
+  creationModalActive = false;
+
+  setTimeout(() => {
+    userNameField.value = "";
+    messageField.value = "";
+  }, 1000);
 };
 
 const loadMessages = async () => {

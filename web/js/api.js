@@ -9,7 +9,7 @@ const getMessages = async (x, y) => {
     {
       method: "GET",
       mode: "cors",
-      cache: "no-cache",
+      cache: "no-store",
     }
   );
 
