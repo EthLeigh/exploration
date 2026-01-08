@@ -11,12 +11,24 @@ body {
 }
 
 .message {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
   position: absolute;
   transform: translate(-50%, -50%);
   font-size: 1rem;
   width: 256px;
   text-align: center;
   text-shadow: 0 0 8px !important;
+}
+
+.message > * {
+  margin: 0;
+}
+
+.message-user-name {
+  font-size: 0.6rem;
+  text-shadow: 0 0 16px !important;
 }
 
 #position {

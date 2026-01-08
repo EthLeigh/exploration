@@ -54,6 +54,7 @@ const loadMessages = async () => {
   messages.forEach((message) => {
     createMessageElement(
       message.message,
+      message["user_name"],
       message["position_x"],
       message["position_y"]
     );
