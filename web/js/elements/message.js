@@ -14,8 +14,8 @@ const createMessageElement = (content, userName, xPosition, yPosition) => {
   messageEl.classList.add("message");
   messageUserNameEl.classList.add("message-user-name");
 
-  messageEl.style.top = `${yPosition}px`;
-  messageEl.style.left = `${xPosition}px`;
+  messageEl.style.top = `calc(50% + ${yPosition}px)`;
+  messageEl.style.left = `calc(50% + ${xPosition}px)`;
 
   messageEl.appendChild(messageContentEl);
   messageEl.appendChild(messageUserNameEl);

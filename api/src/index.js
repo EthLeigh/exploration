@@ -25,7 +25,14 @@ app.get("/api/messages", async (req, res) => {
     return res.status(500).json({ message: "Failed to retrieve messages." });
   }
 
-  return res.json(messages);
+  const formattedMessages = messages.map((message) => ({
+    userName: message["user_name"],
+    message: message.message,
+    x: message["x_position"],
+    y: message["y_position"],
+  }));
+
+  return res.json(formattedMessages);
 });
 
 app.post("/api/messages", async (req, res) => {

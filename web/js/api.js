@@ -9,6 +9,7 @@ const getMessages = async (x, y) => {
     {
       method: "GET",
       mode: "cors",
+      cache: "no-cache",
     }
   );
 
@@ -24,12 +25,15 @@ const getMessages = async (x, y) => {
 const createMessage = async (userName, message, x, y) => {
   await fetch(API_URL + API_MESSAGES_PATH, {
     method: "POST",
-    mode: "no-cors",
-    body: {
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
       userName,
       message,
       x,
       y,
-    },
+    }),
   });
 };

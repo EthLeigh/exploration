@@ -11,7 +11,7 @@
   <script src="js/utils/random.js" defer></script>
   <script src="js/input.js" defer></script>
   <script src="js/elements/message.js" defer></script>
-  <script src="js/player.js"></script>
+  <script src="js/player.js" defer></script>
   <script src="js/main.js" defer></script>
   <script src="js/elements/bubbles.js" defer></script>
 </head>
@@ -26,6 +26,31 @@
     <svg class="glow">
       <path d="M6 0 0 6V20H12V6L6 0ZM6 3 10 7V18H2V7L6 3Z" />
     </svg>
+  </div>
+
+  <div id="create-message-container">
+    <div>
+      <label for="create-message-content-input">Message:</label>
+      <textarea
+        id="create-message-content-input"
+        cols="24"
+        rows="3"
+        maxlength="128"
+        placeholder="Your message here..."
+      ></textarea>
+    </div>
+
+    <div>
+      <label for="create-message-name-input">Name:</label>
+      <input
+        id="create-message-name-input"
+        type="text"
+        maxlength="24"
+        placeholder="Your name here..."
+      />
+    </div>
+
+    <button id="create-message-button" onclick="submitMessage()">Create</button>
   </div>
 
   <div id="world"></div>
